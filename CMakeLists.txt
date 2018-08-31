@@ -2,6 +2,10 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(AL_USDMaya)
 
+# our python
+set(PYTHON_LIBRARY "/dd/tools/cent6_64/package/python/2.7.13_shared/lib/libpython2.7.so")
+include_directories("/dd/tools/cent6_64/package/python/2.7.13_shared/include/python2.7")
+
 #set cmake modules - ";" separated not ":"!
 list(APPEND CMAKE_MODULE_PATH
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/defaults
@@ -70,7 +74,8 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 option(BUILD_USDMAYA_SCHEMAS "Build optional schemas." ON)
 option(BUILD_USDMAYA_TRANSLATORS "Build optional translators." ON)
 option(VALIDATE_GENERATED_SCHEMAS "Generate schemas code and compare." OFF)
-option(SKIP_USDMAYA_TESTS "Build tests" OFF)
+# disable tests!
+option(SKIP_USDMAYA_TESTS "Build tests" ON)
 
 if(NOT SKIP_USDMAYA_TESTS)
     enable_testing()
